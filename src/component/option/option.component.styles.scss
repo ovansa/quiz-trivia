@@ -1,0 +1,48 @@
+.option {
+  border: 1px solid black;
+  display: flex;
+  justify-content: stretch;
+  gap: 10px;
+  padding: 0px 10px;
+  align-items: center;
+  // position: absolute;
+  width: 100%;
+  border-radius: 5px;
+
+  .option-label-info {
+    display: none;
+  }
+
+  .option-label {
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 24px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // .option-text {
+  //   word-wrap: break-word;
+  // }
+
+  &:hover {
+    background-color: gray;
+    cursor: pointer;
+
+    .option-label {
+      display: flex;
+      gap: 10px;
+      width: 44px;
+      margin-left: -40px;
+      padding: 0px 9px;
+      z-index: 5;
+      background-color: green;
+
+      .option-label-info {
+        display: inline-block;
+      }
+    }
+  }
+}
