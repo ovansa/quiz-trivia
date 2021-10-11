@@ -1,13 +1,13 @@
 .question-container {
   width: 70%;
-  margin: auto;
+  margin: 25vh auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  // align-items: center;
 }
 
 .question-description {
-  width: 63%;
+  width: 100%;
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -16,7 +16,6 @@
 .ok-button {
   padding: 0 30px;
   height: 40px;
-  border-radius: 3px;
   letter-spacing: 0.5px;
   font-size: 15px;
   background-color: black;
@@ -28,6 +27,12 @@
   margin-top: 30px;
   border: none;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
+  width: 80px;
+  margin-left: 20px;
+
+  &:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid;
+  }
 }
