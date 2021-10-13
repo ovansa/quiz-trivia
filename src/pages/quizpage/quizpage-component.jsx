@@ -38,4 +38,4 @@ const QuizPage = () => {
 
 export default QuizPage;
 
-// TODO: Display dynamic questions
+// TODO: Display dynamic questionss
