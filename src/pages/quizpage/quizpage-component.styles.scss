@@ -1,5 +1,6 @@
 .question-container {
   width: 70%;
+  height: 100%;
   margin: 25vh auto;
   display: flex;
   flex-direction: column;
@@ -34,5 +35,38 @@
     background-color: white;
     color: black;
     border: 1px solid;
+  }
+}
+
+.next-previous-buttons {
+  // float: right;
+  display: flex;
+  gap: 1px;
+  // margin: 0 50px 0px 0px;
+
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+
+  .up-button,
+  .down-button {
+    height: 32px;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Ubuntu', sans-serif;
+    border: none;
+    cursor: pointer;
+    cursor: pointer;
+    width: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+
+    .icon {
+      height: 13px;
+      width: 13px;
+      fill: white;
+    }
   }
 }

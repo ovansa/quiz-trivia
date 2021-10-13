@@ -1,5 +1,5 @@
 import './App.css';
-import QuizPage from './quizpage/quizpage-component';
+import QuizPage from '../src/pages/quizpage/quizpage-component';
 
 const App = () => {
   return (
