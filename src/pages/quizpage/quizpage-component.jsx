@@ -38,4 +38,5 @@ const QuizPage = () => {
 
 export default QuizPage;
 
-// TODO: Display dynamic questionss
+// TODO: Options should be visually selected
+// TODO: Display dynamic questions

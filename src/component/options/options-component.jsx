@@ -1,9 +1,11 @@
-import React from 'react';
-import Option from '../option/option.component';
+import React, { useState } from 'react';
+import Radio from '../form-fields/radio-component/radio-component';
 
 import './options-component.styles.scss';
 
 const Options = () => {
+  const [selected, setSelected] = useState('');
+
   const options = [
     {
       option: 'a',
@@ -23,11 +25,16 @@ const Options = () => {
   return (
     <div className='options'>
       {options.map((option) => (
-        <Option key={option.option} option={option} />
+        <Radio
+          key={option.option}
+          value={option.option}
+          selected={selected}
+          text={option.value}
+          onChange={setSelected}
+          option={option.option}
+        />
+        // <Option key={option.option} option={option} />
       ))}
-      {/* <Option optionText={''}/>
-      <Option />
-      <Option /> */}
     </div>
   );
 };
