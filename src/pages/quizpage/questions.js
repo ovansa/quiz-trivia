@@ -1,4 +1,4 @@
-const questions = [
+const sampleQuestions = [
   {
     id: 1,
     question: 'This is a question that should show.',
@@ -14,6 +14,7 @@ const questions = [
         value: 'Mauris justo lorem, posuere non odio id.',
       },
     ],
+    correctAnswer: 'a',
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ const questions = [
         value: 'Mauris justo lorem.',
       },
     ],
+    correctAnswer: 'b',
   },
   {
     id: 3,
@@ -46,7 +48,8 @@ const questions = [
         value: 'Mauris justo lorem. Plaster',
       },
     ],
+    correctAnswer: 'c',
   },
 ];
 
-export default questions;
+export default sampleQuestions;

@@ -4,16 +4,11 @@ import './radio-component.styles.scss';
 
 const Radio = ({ selected, onChange, text, option, value }) => {
   const isSelected = value === selected ? 'selected' : '';
-  if (isSelected === 'selected') {
-    console.log('I selected this -------------------------------', text);
-  }
 
   return (
     <div
       className={`radio-option ${isSelected}`}
       onClick={() => {
-        // alert('This option was clicked', value);
-
         onChange(value);
       }}>
       <div className='option-label'>

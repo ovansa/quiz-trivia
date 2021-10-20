@@ -4,13 +4,23 @@ import Options from '../../component/options/options-component';
 import { ReactComponent as ArrowUpIcon } from '../../assets/up-arrow-svgrepo-com.svg';
 import { ReactComponent as ArrowDownIcon } from '../../assets/down-arrow-svgrepo-com.svg';
 
-import questions from './questions';
+import sampleQuestions from './questions';
 
 import './quizpage-component.styles.scss';
 
 const QuizPage = () => {
+  const questions = sampleQuestions.map((question) => {
+    return {
+      ...question,
+      selectedAnswer: '',
+    };
+  });
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [userQuestions, setAnswerForQuestions] = useState(questions);
   const nextQuestion = currentQuestion + 1;
+
+  console.log(userQuestions);
 
   const displayNext = () => {
     if (nextQuestion < questions.length) {
@@ -52,3 +62,7 @@ const QuizPage = () => {
 export default QuizPage;
 
 // TODO: Save selected answers and pre-fill selected answers on navigate back and forth questions.
+
+/**
+  I want to set the answer for a question when user clicks on an option.
+*/
