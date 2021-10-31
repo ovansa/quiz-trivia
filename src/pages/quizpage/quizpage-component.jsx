@@ -5,8 +5,10 @@ import { ReactComponent as ArrowUpIcon } from '../../assets/up-arrow-svgrepo-com
 import { ReactComponent as ArrowDownIcon } from '../../assets/down-arrow-svgrepo-com.svg';
 
 import sampleQuestions from './questions';
+import Radio from '../../component/form-fields/radio-component/radio-component';
 
 import './quizpage-component.styles.scss';
+import '../../component/options/options-component.styles.scss';
 
 const QuizPage = () => {
   const questions = sampleQuestions.map((question) => {
@@ -17,10 +19,13 @@ const QuizPage = () => {
   });
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
+
   const [userQuestions, setAnswerForQuestions] = useState(questions);
   const nextQuestion = currentQuestion + 1;
-
-  console.log(userQuestions);
+  const btnPrevDisabled = currentQuestion - 1 < 0 ? 'disable' : '';
+  const btnNextDisabled =
+    currentQuestion + 1 >= userQuestions.length ? 'disable' : '';
+  console.log('btnNextDisabled ', btnNextDisabled);
 
   const displayNext = () => {
     if (nextQuestion < questions.length) {
@@ -35,17 +40,46 @@ const QuizPage = () => {
     }
   };
 
+  const updateQuestionAnswer = (value) => {
+    let newQuestions = [...userQuestions];
+    newQuestions[currentQuestion].selectedAnswer = value;
+    setAnswerForQuestions(newQuestions);
+  };
+
   return (
     <div className='quiz-page'>
       <div className='question-container'>
         <div className='question-description'>
           <p>{currentQuestion + 1}.</p>
-          <p>{questions[currentQuestion].question}</p>
+          <p>{userQuestions[currentQuestion].question}</p>
         </div>
-        <Options options={questions[currentQuestion].options} />
-        <button className='ok-button' onClick={() => displayNext()}>
-          OK
-        </button>
+
+        <div className='options'>
+          {userQuestions[currentQuestion].options.map((option) => (
+            <Radio
+              key={option.option}
+              value={option.option}
+              selected={userQuestions[currentQuestion].selectedAnswer}
+              text={option.value}
+              onChange={(value) => updateQuestionAnswer(value)}
+              option={option.option}
+            />
+          ))}
+        </div>
+        <div className='next-prev'>
+          <button
+            className={`${btnPrevDisabled}`}
+            disabled={btnPrevDisabled}
+            onClick={() => displayPrevious()}>
+            PREV
+          </button>
+          <button
+            className={`${btnNextDisabled}`}
+            disabled={btnNextDisabled}
+            onClick={() => displayNext()}>
+            NEXT
+          </button>
+        </div>
       </div>
       <div className='next-previous-buttons'>
         <button className='up-button'>
@@ -60,9 +94,3 @@ const QuizPage = () => {
 };
 
 export default QuizPage;
-
-// TODO: Save selected answers and pre-fill selected answers on navigate back and forth questions.
-
-/**
-  I want to set the answer for a question when user clicks on an option.
-*/
