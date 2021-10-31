@@ -25,7 +25,7 @@ const QuizPage = () => {
   const btnPrevDisabled = currentQuestion - 1 < 0 ? 'disable' : '';
   const btnNextDisabled =
     currentQuestion + 1 >= userQuestions.length ? 'disable' : '';
-  console.log('btnNextDisabled ', btnNextDisabled);
+  let userScore = 0;
 
   const displayNext = () => {
     if (nextQuestion < questions.length) {
@@ -44,6 +44,17 @@ const QuizPage = () => {
     let newQuestions = [...userQuestions];
     newQuestions[currentQuestion].selectedAnswer = value;
     setAnswerForQuestions(newQuestions);
+  };
+
+  const onClickSubmit = () => {
+    for (let question of userQuestions) {
+      if (question.selectedAnswer === question.correctAnswer) {
+        userScore += 1;
+      }
+    }
+
+    alert(`Score is ${userScore}`);
+    console.log('Score ', userScore);
   };
 
   return (
@@ -66,29 +77,34 @@ const QuizPage = () => {
             />
           ))}
         </div>
-        <div className='next-prev'>
-          <button
-            className={`${btnPrevDisabled}`}
-            disabled={btnPrevDisabled}
-            onClick={() => displayPrevious()}>
-            PREV
-          </button>
-          <button
-            className={`${btnNextDisabled}`}
-            disabled={btnNextDisabled}
-            onClick={() => displayNext()}>
-            NEXT
-          </button>
+        <div className='next-prev-submit'>
+          <div className='left'>
+            <button
+              className={`${btnPrevDisabled}`}
+              disabled={btnPrevDisabled}
+              onClick={() => displayPrevious()}>
+              PREV
+            </button>
+            <button
+              className={`${btnNextDisabled}`}
+              disabled={btnNextDisabled}
+              onClick={() => displayNext()}>
+              NEXT
+            </button>
+          </div>
+          <div className='right'>
+            <button onClick={() => onClickSubmit()}>SUBMIT</button>
+          </div>
         </div>
       </div>
-      <div className='next-previous-buttons'>
+      {/* <div className='next-previous-buttons'>
         <button className='up-button'>
           <ArrowUpIcon className='icon' onClick={() => displayNext()} />
         </button>
         <button className='down-button'>
           <ArrowDownIcon className='icon' onClick={() => displayPrevious()} />
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
