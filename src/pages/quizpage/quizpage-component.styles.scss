@@ -89,3 +89,12 @@
     }
   }
 }
+
+.modal_popup {
+  position: relative;
+  display: none;
+}
+
+.show_modal_popup {
+  display: contents;
+}

@@ -19,8 +19,8 @@ const QuizPage = () => {
   });
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
-
   const [userQuestions, setAnswerForQuestions] = useState(questions);
+  const [isModalDisplayed, setDisplayModal] = useState(false);
   const nextQuestion = currentQuestion + 1;
   const btnPrevDisabled = currentQuestion - 1 < 0 ? 'disable' : '';
   const btnNextDisabled =
@@ -47,13 +47,14 @@ const QuizPage = () => {
   };
 
   const onClickSubmit = () => {
+    setDisplayModal(!isModalDisplayed);
     for (let question of userQuestions) {
       if (question.selectedAnswer === question.correctAnswer) {
         userScore += 1;
       }
     }
 
-    alert(`Score is ${userScore}`);
+    // alert(`Score is ${userScore}`);
     console.log('Score ', userScore);
   };
 
@@ -105,6 +106,28 @@ const QuizPage = () => {
           <ArrowDownIcon className='icon' onClick={() => displayPrevious()} />
         </button>
       </div> */}
+      <div
+        class={`modal_popup ${
+          isModalDisplayed === true ? 'show_modal_popup' : ''
+        }`}>
+        <div class='bg_shadow'></div>
+        <div class='popup'>
+          <div class='popup_head'>
+            Do you want to cancel your account?
+            <button class='close_btn'></button>
+          </div>
+          <div class='popup_body'>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </div>
+          <div class='popup_foot'>
+            <button class='popup_btn popup_cancel_btn'>Cancel</button>
+            <button class='popup_btn popup_confirm_btn'>Confirm</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
