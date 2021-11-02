@@ -114,7 +114,7 @@ const QuizPage = () => {
         <div class='popup'>
           <div class='popup_head'>
             Do you want to cancel your account?
-            <button class='close_btn'></button>
+            {/* <button class='close_btn'>Close</button> */}
           </div>
           <div class='popup_body'>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -123,7 +123,11 @@ const QuizPage = () => {
             aliquip ex ea commodo consequat.
           </div>
           <div class='popup_foot'>
-            <button class='popup_btn popup_cancel_btn'>Cancel</button>
+            <button
+              class='popup_btn popup_cancel_btn'
+              onClick={() => onClickSubmit()}>
+              Cancel
+            </button>
             <button class='popup_btn popup_confirm_btn'>Confirm</button>
           </div>
         </div>
@@ -133,3 +137,5 @@ const QuizPage = () => {
 };
 
 export default QuizPage;
+
+//https://github.com/codingmarket07/Modal-Popup-UI-Design/blob/main/styles.css
