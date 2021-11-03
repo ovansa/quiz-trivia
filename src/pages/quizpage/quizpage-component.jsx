@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Options from '../../component/options/options-component';
 
+import ModalPopup from '../../component/modal/modal_popup.component';
+
 import { ReactComponent as ArrowUpIcon } from '../../assets/up-arrow-svgrepo-com.svg';
 import { ReactComponent as ArrowDownIcon } from '../../assets/down-arrow-svgrepo-com.svg';
 
@@ -106,32 +108,11 @@ const QuizPage = () => {
           <ArrowDownIcon className='icon' onClick={() => displayPrevious()} />
         </button>
       </div> */}
-      <div
-        class={`modal_popup ${
-          isModalDisplayed === true ? 'show_modal_popup' : ''
-        }`}>
-        <div class='bg_shadow'></div>
-        <div class='popup'>
-          <div class='popup_head'>
-            Do you want to cancel your account?
-            {/* <button class='close_btn'>Close</button> */}
-          </div>
-          <div class='popup_body'>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </div>
-          <div class='popup_foot'>
-            <button
-              class='popup_btn popup_cancel_btn'
-              onClick={() => onClickSubmit()}>
-              Cancel
-            </button>
-            <button class='popup_btn popup_confirm_btn'>Confirm</button>
-          </div>
-        </div>
-      </div>
+      <ModalPopup
+        isModalDisplayed={isModalDisplayed}
+        showHideModal={() => setDisplayModal(!isModalDisplayed)}
+        userQuestions={userQuestions}
+      />
     </div>
   );
 };
